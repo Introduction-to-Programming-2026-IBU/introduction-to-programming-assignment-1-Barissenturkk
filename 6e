@@ -1,0 +1,34 @@
+cart = {}
+ 
+print("Shopping Cart (type 'done' to finish, 'remove' to remove an item)\n")
+ 
+while True:
+    action = input("Action (add/remove/done): ").lower()
+ 
+    if action == "done":
+        break
+    elif action == "add":
+        item = input("Item name: ")
+        price = float(input("Price: "))
+        quantity = int(input("Quantity: "))
+        if item in cart:
+            cart[item]["quantity"] += quantity
+        else:
+            cart[item] = {"price": price, "quantity": quantity}
+        print(f"Added {quantity}x {item}\n")
+    elif action == "remove":
+        item = input("Item to remove: ")
+        if item in cart:
+            del cart[item]
+            print(f"Removed {item}\n")
+        else:
+            print("Item not found.\n")
+ 
+print("\n--- Receipt ---")
+total = 0
+for item, info in cart.items():
+    subtotal = info["price"] * info["quantity"]
+    total += subtotal
+    print(f"{item} x{info['quantity']} @ ${info['price']:.2f} = ${subtotal:.2f}")
+ 
+print(f"\nTotal: ${total:.2f}")
