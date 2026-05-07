@@ -1,0 +1,26 @@
+grades = []
+ 
+print("Enter grades (type 'done' to finish):")
+ 
+while True:
+    entry = input("Grade: ")
+    if entry.lower() == "done":
+        break
+    grades.append(float(entry))
+ 
+average = sum(grades) / len(grades)
+ 
+if average >= 90:
+    letter = "A"
+elif average >= 80:
+    letter = "B"
+elif average >= 70:
+    letter = "C"
+elif average >= 60:
+    letter = "D"
+else:
+    letter = "F"
+ 
+print(f"Average: {average:.2f}")
+print(f"Letter Grade: {letter}")
+ 
